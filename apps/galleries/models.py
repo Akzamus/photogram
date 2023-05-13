@@ -16,12 +16,12 @@ class Gallery(models.Model):
         blank=False,
     )
     name = models.CharField(
-        max_length=255,
+        max_length=50,
         null=False,
         blank=False,
     )
     icon = models.CharField(
-        max_length=255,
+        max_length=50,
         null=False,
         blank=False,
     )
@@ -45,7 +45,7 @@ class Picture(models.Model):
         blank=False,
     )
     name = models.CharField(
-        max_length=255,
+        max_length=50,
         null=False,
         blank=False,
     )

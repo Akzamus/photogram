@@ -18,6 +18,6 @@ class PictureAdmin(admin.ModelAdmin):
     search_fields = ('name', 'gallery__name')
 
     def image_tag(self, obj):
-        return format_html('<img class="image" src="{}" />'.format(obj.avatar.url))
+        return format_html('<img class="image" src="{}" />'.format(obj.image.url))
 
     image_tag.short_description = 'Image'

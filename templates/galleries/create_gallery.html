@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+</head>
+<body>
+    <form method="post" style="width: 600px">
+        {% csrf_token %}
+        <h3 class="formHeader">Create Gallery</h3>
+
+        {{ form.user }}
+
+        {{ form.name.label_tag }}
+        {{ form.name }}
+        {{ form.name.errors }}
+
+        {{ form.icon.label_tag }}
+        {{ form.icon }}
+        {{ form.icon.errors }}
+
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
+
+        <button class="blueButton" type="submit">Create</button>
+    </form>
+</body>
+</html>

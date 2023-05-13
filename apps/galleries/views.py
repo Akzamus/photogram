@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
+from .forms import GalleryForm, PictureForm
 from .models import Gallery, Picture
 
 User = get_user_model()
@@ -40,3 +41,31 @@ def profile_view(request, username=None):
     }
 
     return render(request, 'galleries/profile.html', context)
+
+
+@login_required
+def create_gallery_view(request):
+    if request.method == 'POST':
+        form = GalleryForm(request.user, data=request.POST)
+        if form.is_valid():
+            gallery = form.save(commit=False)
+            gallery.user = request.user
+            gallery.save()
+            return redirect('galleries:my_profile')
+    else:
+        form = GalleryForm(user=request.user)
+    return render(request, 'galleries/create_gallery.html', {'form': form})
+
+
+@login_required
+def create_picture_view(request):
+    if request.method == 'POST':
+        form = PictureForm(request.user, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            picture = form.save(commit=False)
+            picture.user = request.user
+            picture.save()
+            return redirect('galleries:my_profile')
+    else:
+        form = PictureForm(user=request.user)
+    return render(request, 'galleries/create_picture.html', {'form': form})

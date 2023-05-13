@@ -48,16 +48,36 @@ a:active {
     color: #3333ff;
 }
 
-input {
+input, textarea, select {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 0.9rem;
 }
 
-input:focus {
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
     border-color: #7f7fff;
     animation: scale 0.9s ease-in-out forwards;
+}
+
+select option {
+  font-size: 1.1rem;
+  background-color: #ffffff;
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 0 0 0 10px;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: row;
+    height: 15px;
+    align-items: center;
 }
 
 @keyframes scale {

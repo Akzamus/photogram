@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Picture</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+</head>
+<body>
+<form method="post" enctype="multipart/form-data" style="width: 600px">
+    {% csrf_token %}
+    <h3 class="formHeader">Create Picture</h3>
+
+    {{ form.gallery.label_tag }}
+    {{ form.gallery }}
+    {{ form.gallery.errors }}
+
+
+    {{ form.name.label_tag }}
+    {{ form.name }}
+    {{ form.name.errors }}
+
+
+    {{ form.description.label_tag }}
+    {{ form.description }}
+    {{ form.description.errors }}
+
+
+    {{ form.image.label_tag }}
+    {{ form.image }}
+    {{ form.image.errors }}
+
+    <div class="checkbox-container">
+        {{ form.is_favorite.label_tag }}
+        {{ form.is_favorite }}
+    </div>
+    {{ form.is_favorite.errors }}
+
+    {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+    {% endif %}
+
+
+    <button class="blueButton" type="submit">Create</button>
+</form>
+</body>
+</html>
