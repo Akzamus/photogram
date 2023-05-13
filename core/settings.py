@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-0-f-6t*y$pgrjgfx_gn!(0x$hqa^!l6_i39@!hsjkqih_s3%q6
 DEBUG = True
 ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = reverse_lazy('accounts:profile')
+LOGIN_REDIRECT_URL = reverse_lazy('galleries:my_profile')
 AUTH_USER_MODEL = 'accounts.User'
 
 X_FRAME_OPTIONS = "SAMEORIGIN"

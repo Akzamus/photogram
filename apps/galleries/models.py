@@ -58,6 +58,11 @@ class Picture(models.Model):
         null=False,
         blank=False,
     )
+    is_favorite = models.BooleanField(
+        default=False,
+        null=False,
+        blank=False,
+    )
     created_at = models.DateTimeField(
         auto_now_add=True,
         null=False,
