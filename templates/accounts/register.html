@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accounts/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accounts/register.css' %}">
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3 class="formHeader">Sign Up</h3>
+
+        <label for="username">Username</label>
+        {{ form.username }}
+        {{ form.username.errors }}
+
+        <label for="email">Email</label>
+        {{ form.email }}
+        {{ form.email.errors }}
+
+        <label for="password1">Password</label>
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+
+
+        <label for="password2">Confirm Password</label>
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+
+        <label for="avatar">Avatar</label>
+        {{ form.avatar }}
+        {{ form.avatar.errors }}
+
+        <button class="blueButton" type="submit">Signup</button>
+
+        <a href="{% url 'accounts:login' %}" >I have already account</a>
+    </form>
+</body>
+</html>

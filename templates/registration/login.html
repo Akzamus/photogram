@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accounts/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accounts/login.css' %}">
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="post">
+        <h3 class="formHeader">Login</h3>
+        {% csrf_token %}
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username" id="username" name="username">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter Password" id="password" name="password">
+
+        {% if form.errors %}
+            <p>Invalid username or password</p>
+        {% endif %}
+
+        <button class="blueButton" type="submit">Log In</button>
+
+        <a href="{% url 'accounts:register' %}" >Create a account</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+form {
+    height: 80%;
+    width: 30%;
+    margin: 10% 35%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 50px 40px 20px 40px;
+}
+
+p {
+    color: red;
+}
