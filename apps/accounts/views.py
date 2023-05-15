@@ -7,7 +7,7 @@ from django.contrib.auth import logout
 User = get_user_model()
 
 
-def register_view(request):
+def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
@@ -19,13 +19,13 @@ def register_view(request):
 
 
 @login_required
-def search_users_view(request):
+def search_users(request):
     if request.method == 'GET':
         query = request.GET.get('query', '')
         users = User.objects.filter(username__icontains=query, is_staff=False)
         return render(request, 'accounts/search_users.html', {'users': users})
 
 
-def logout_view(request):
+def logout_user(request):
     logout(request)
     return redirect('accounts:login')

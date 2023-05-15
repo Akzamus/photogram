@@ -9,7 +9,7 @@ User = get_user_model()
 
 
 @login_required
-def profile_view(request, username=None):
+def profile(request, username=None):
     if not username:
         profile_user = request.user
     else:
@@ -44,7 +44,7 @@ def profile_view(request, username=None):
 
 
 @login_required
-def create_gallery_view(request):
+def create_gallery(request):
     if request.method == 'POST':
         form = GalleryForm(request.user, data=request.POST)
         if form.is_valid():
@@ -58,7 +58,7 @@ def create_gallery_view(request):
 
 
 @login_required
-def create_picture_view(request):
+def create_picture(request):
     if request.method == 'POST':
         form = PictureForm(request.user, data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -69,3 +69,10 @@ def create_picture_view(request):
     else:
         form = PictureForm(user=request.user)
     return render(request, 'galleries/create_picture.html', {'form': form})
+
+
+@login_required
+def picture_detail(request, id):
+    picture = get_object_or_404(Picture, id=id)
+    author = picture.gallery.user
+    return render(request, 'galleries/picture_detail.html', {'picture': picture, 'author': author})

@@ -6,14 +6,14 @@ from .models import Gallery, Picture
 
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'user', 'icon')
+    list_display = ('id', 'name', 'user', 'icon')
     list_filter = ('user',)
     search_fields = ('name', 'user__username')
 
 
 @admin.register(Picture)
 class PictureAdmin(admin.ModelAdmin):
-    list_display = ('name', 'gallery', 'created_at', 'image_tag')
+    list_display = ('id', 'name', 'gallery', 'created_at', 'image_tag')
     list_filter = ('gallery',)
     search_fields = ('name', 'gallery__name')
 

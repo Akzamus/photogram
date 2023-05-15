@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Post</title>
+    <link rel="stylesheet" href="{% static 'css/picture-details.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="style_details.css">
+</head>
+<body>
+<div class="card">
+    <div class="top">
+        <div class="userDeatils">
+            <div class="profileImg">
+                <img src="{{ author.avatar.url }}" alt="user" class="cover">
+            </div>
+            <h3>{{ author.username }}</h3>
+        </div>
+        <div class="dot" onclick="window.location.href='{% url 'galleries:profile' username=author.username %}';">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+    </div>
+    <h4>{{ picture.name }}</h4>
+    <div class="imgBg">
+        <img src="{{ picture.image.url }}" class="cover">
+    </div>
+    <p class="message">
+        {{ picture.description }}
+    </p>
+</div>
+</body>
+
+</html>

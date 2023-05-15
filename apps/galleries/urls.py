@@ -1,12 +1,13 @@
 from django.urls import path
 
-from .views import profile_view, create_gallery_view, create_picture_view
+from .views import profile, create_gallery, create_picture, picture_detail
 
 app_name = 'galleries'
 
 urlpatterns = [
-    path('profile/', profile_view, name='my_profile'),
-    path('profile/<str:username>/', profile_view, name='profile'),
-    path('create-gallery/', create_gallery_view, name='create_gallery'),
-    path('create-picture/', create_picture_view, name='create_picture'),
+    path('profile/', profile, name='my_profile'),
+    path('profile/<str:username>/', profile, name='profile'),
+    path('create-gallery/', create_gallery, name='create_gallery'),
+    path('create-picture/', create_picture, name='create_picture'),
+    path('pictures/<int:id>/', picture_detail, name='picture'),
 ]
