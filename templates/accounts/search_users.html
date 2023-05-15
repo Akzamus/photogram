@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <title>Search</title>
+</head>
+<body>
+<nav class="navbar">
+    <img src="{% static 'img/logo.png' %}" class="brand-img" alt="">
+    <div class="buttons-container">
+        <button onclick="window.location.href='{% url 'galleries:my_profile' %}';" class="btn search-btn">My Profile</button>
+        <button onclick="window.location.href='{% url 'accounts:logout' %}';" class="btn search-btn">Log Out</button>
+    </div>
+</nav>
+<div class="container">
+    <form class="search" method="GET">
+        <input type="text" class="search-box" placeholder="search" name="value">
+        <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+        <button onclick="window.location.href='{% url 'accounts:search_users' %}';" class="btn profile-btn">Search</button>
+    </form>
+    {% for search_user in users %}
+        <div onclick="window.location.href='{% url 'galleries:profile' username=search_user.username %}';"
+             class="userDeatails">
+            <div class="profileImg">
+                <img src="{{ search_user.avatar.url }}" alt="user" class="cover">
+            </div>
+            <h3>{{ search_user.username }}</h3>
+        </div>
+        <hr id="hr">
+    {% endfor %}
+</div>

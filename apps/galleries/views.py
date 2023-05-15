@@ -19,7 +19,7 @@ def profile_view(request, username=None):
 
     if 'gallery_id' in request.GET:
         gallery_id = request.GET['gallery_id']
-        gallery = get_object_or_404(Gallery, id=gallery_id, user=profile_user)
+        gallery = get_object_or_404(Gallery, id=gallery_id)
     else:
         gallery = profile_user.galleries.first()
 
@@ -35,7 +35,7 @@ def profile_view(request, username=None):
     context = {
         'is_own_profile': is_own_profile,
         'profile_user': profile_user,
-        'gallery_id': gallery_id,
+        'selected_gallery_id': gallery_id,
         'galleries': galleries,
         'pictures': pictures,
     }

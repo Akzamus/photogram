@@ -9,6 +9,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = reverse_lazy('galleries:my_profile')
+LOGIN_URL = reverse_lazy('accounts:login')
 AUTH_USER_MODEL = 'accounts.User'
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
