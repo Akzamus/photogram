@@ -1,0 +1,12 @@
+services:
+  backend:
+    container_name: photogram-django-container
+    image: photogram-django
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./db.sqlite3:/usr/src/app/db.sqlite3
+      - ./media:/usr/src/app/media
+    command: python /usr/src/app/manage.py runserver 0.0.0.0:8000 
